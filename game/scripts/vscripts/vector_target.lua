@@ -358,7 +358,7 @@ function VectorTarget:OrderFilter(data)
     --print("seq num: ", seqNum, "order type: ", data.order_type, "queue: ", data.queue)
     if abilId ~= nil and abilId > 0 then
         local abil = EntIndexToHScript(abilId)
-        if abil.isVectorTarget and data.order_type == DOTA_UNIT_ORDER_CAST_POSITION then
+        if abil and abil.isVectorTarget and data.order_type == DOTA_UNIT_ORDER_CAST_POSITION then
             local unitId = units["0"] or units[0]
             local targetPos = {x = data.position_x, y = data.position_y, z = data.position_z}
             if inProgress == nil or inProgress.abilId ~= abilId or inProgress.unitId ~= unitId then -- if no in-progress order, this order selects the initial point of a vector cast
